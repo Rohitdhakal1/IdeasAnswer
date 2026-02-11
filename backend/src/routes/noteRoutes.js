@@ -19,7 +19,7 @@ router.post('/',authMiddleware,async(req,res)=>{
 })
 
 router.get('/',authMiddleware,async(req,res)=>{
-    const notes = await Note.find({userId:TEMP_USER_ID});
+    const notes = await Note.find({userId:req.user.id});
     res.json(notes);
 });
 

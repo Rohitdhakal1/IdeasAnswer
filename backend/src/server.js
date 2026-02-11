@@ -5,6 +5,7 @@ import Note from "./models/Note.js";
 import noteRoutes from "./routes/noteRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 import cookieParser from "cookie-parser";
+import aiRoutes from "./routes/aiRoutes.js";
 
 
 
@@ -17,6 +18,7 @@ app.use(cookieParser()); // need to add always before routes
 
 app.use('/notes',noteRoutes);
 app.use('/auth',authRoutes);
+app.use("/ai", aiRoutes);
 
 
 
