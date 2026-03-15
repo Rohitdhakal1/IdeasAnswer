@@ -2,9 +2,7 @@
 
 A personal note-taking application with a unique **"Sketchy" UI** and powerful **AI-driven querying** capabilities.
 
-![Chat](screenshots/SignupandLogin.png)
-![Chat](screenshots/Notes.png)
-![Chat](screenshots/AiChat.png)
+![Chat](screenshots/main.png)
 
 ## Features
 
