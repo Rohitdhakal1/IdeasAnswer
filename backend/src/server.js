@@ -1,27 +1,30 @@
 import dotenv from "dotenv";
 import express from "express";
-import connectDB from "./config/database.js"; 
+import connectDB from "./config/database.js";
 import Note from "./models/Note.js";
 import noteRoutes from "./routes/noteRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 import cookieParser from "cookie-parser";
 import aiRoutes from "./routes/aiRoutes.js";
-
-
+import "./config/redis.js";
+import cors from "cors";
 
 dotenv.config();
 
 const app = express();
 
-app.use(express.json()); 
-app.use(cookieParser()); // need to add always before routes 
+app.use(express.json());
+app.use(cookieParser()); // need to add always before routes
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  }),
+);
 
-app.use('/notes',noteRoutes);
-app.use('/auth',authRoutes);
+app.use("/notes", noteRoutes);
+app.use("/auth", authRoutes);
 app.use("/ai", aiRoutes);
-
-
-
 
 connectDB();
 
@@ -36,8 +39,6 @@ app.get("/health", (req, res) => {
   });
 });
 
-
 app.listen(3000, () => {
   console.log("Server listening on port 3000");
 });
-
